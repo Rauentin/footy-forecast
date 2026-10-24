@@ -1,0 +1,381 @@
+HomeTeam,AwayTeam
+Arsenal,Coventry
+Hull,Man United
+Everton,Crystal Palace
+Ipswich,Sunderland
+Nott'm Forest,Leeds
+Brentford,Tottenham
+Brighton,Aston Villa
+Man City,Bournemouth
+Newcastle,Liverpool
+Fulham,Chelsea
+Crystal Palace,Man City
+Liverpool,Nott'm Forest
+Bournemouth,Everton
+Coventry,Hull
+Tottenham,Newcastle
+Chelsea,Brighton
+Leeds,Brentford
+Sunderland,Fulham
+Man United,Ipswich
+Aston Villa,Arsenal
+Ipswich,Liverpool
+Newcastle,Bournemouth
+Brentford,Sunderland
+Brighton,Leeds
+Fulham,Crystal Palace
+Man City,Coventry
+Nott'm Forest,Tottenham
+Hull,Aston Villa
+Everton,Man United
+Arsenal,Chelsea
+Bournemouth,Brentford
+Aston Villa,Nott'm Forest
+Chelsea,Hull
+Crystal Palace,Ipswich
+Liverpool,Fulham
+Tottenham,Everton
+Sunderland,Arsenal
+Coventry,Brighton
+Man United,Man City
+Leeds,Newcastle
+Brentford,Chelsea
+Tottenham,Aston Villa
+Brighton,Arsenal
+Everton,Ipswich
+Leeds,Crystal Palace
+Man City,Sunderland
+Newcastle,Hull
+Nott'm Forest,Coventry
+Bournemouth,Liverpool
+Fulham,Man United
+Arsenal,Leeds
+Aston Villa,Brentford
+Chelsea,Bournemouth
+Coventry,Newcastle
+Crystal Palace,Nott'm Forest
+Hull,Everton
+Ipswich,Fulham
+Liverpool,Man City
+Man United,Tottenham
+Sunderland,Brighton
+Bournemouth,Sunderland
+Brentford,Liverpool
+Brighton,Crystal Palace
+Everton,Chelsea
+Fulham,Hull
+Leeds,Man United
+Man City,Ipswich
+Newcastle,Aston Villa
+Nott'm Forest,Arsenal
+Tottenham,Coventry
+Arsenal,Everton
+Aston Villa,Man City
+Chelsea,Tottenham
+Coventry,Fulham
+Crystal Palace,Newcastle
+Hull,Brentford
+Ipswich,Nott'm Forest
+Liverpool,Brighton
+Man United,Bournemouth
+Sunderland,Leeds
+Bournemouth,Leeds
+Aston Villa,Fulham
+Brentford,Nott'm Forest
+Chelsea,Man United
+Coventry,Sunderland
+Hull,Ipswich
+Liverpool,Arsenal
+Man City,Brighton
+Newcastle,Everton
+Tottenham,Crystal Palace
+Arsenal,Hull
+Brighton,Brentford
+Crystal Palace,Liverpool
+Everton,Coventry
+Fulham,Newcastle
+Ipswich,Bournemouth
+Leeds,Tottenham
+Man United,Aston Villa
+Nott'm Forest,Man City
+Sunderland,Chelsea
+Bournemouth,Nott'm Forest
+Aston Villa,Sunderland
+Brentford,Everton
+Chelsea,Leeds
+Coventry,Crystal Palace
+Hull,Brighton
+Liverpool,Man United
+Man City,Fulham
+Newcastle,Arsenal
+Tottenham,Ipswich
+Arsenal,Man City
+Brighton,Newcastle
+Crystal Palace,Hull
+Everton,Liverpool
+Fulham,Bournemouth
+Ipswich,Aston Villa
+Leeds,Coventry
+Man United,Brentford
+Nott'm Forest,Chelsea
+Sunderland,Tottenham
+Bournemouth,Brighton
+Aston Villa,Everton
+Brentford,Arsenal
+Chelsea,Crystal Palace
+Coventry,Ipswich
+Hull,Nott'm Forest
+Liverpool,Sunderland
+Man City,Leeds
+Newcastle,Man United
+Tottenham,Fulham
+Bournemouth,Hull
+Aston Villa,Crystal Palace
+Brentford,Man City
+Chelsea,Liverpool
+Everton,Fulham
+Leeds,Ipswich
+Man United,Coventry
+Newcastle,Sunderland
+Nott'm Forest,Brighton
+Tottenham,Arsenal
+Arsenal,Bournemouth
+Brighton,Everton
+Coventry,Aston Villa
+Crystal Palace,Man United
+Fulham,Brentford
+Hull,Tottenham
+Ipswich,Newcastle
+Liverpool,Leeds
+Man City,Chelsea
+Sunderland,Nott'm Forest
+Bournemouth,Coventry
+Arsenal,Man United
+Brentford,Newcastle
+Brighton,Ipswich
+Chelsea,Aston Villa
+Leeds,Fulham
+Liverpool,Tottenham
+Man City,Hull
+Nott'm Forest,Everton
+Sunderland,Crystal Palace
+Aston Villa,Leeds
+Coventry,Chelsea
+Crystal Palace,Arsenal
+Everton,Sunderland
+Fulham,Brighton
+Hull,Liverpool
+Ipswich,Brentford
+Man United,Nott'm Forest
+Newcastle,Man City
+Tottenham,Bournemouth
+Aston Villa,Liverpool
+Coventry,Brentford
+Crystal Palace,Bournemouth
+Everton,Man City
+Fulham,Arsenal
+Hull,Leeds
+Ipswich,Chelsea
+Man United,Sunderland
+Newcastle,Nott'm Forest
+Tottenham,Brighton
+Bournemouth,Aston Villa
+Arsenal,Ipswich
+Brentford,Crystal Palace
+Brighton,Man United
+Chelsea,Newcastle
+Leeds,Everton
+Liverpool,Coventry
+Man City,Tottenham
+Nott'm Forest,Fulham
+Sunderland,Hull
+Arsenal,Brentford
+Brighton,Bournemouth
+Crystal Palace,Chelsea
+Everton,Aston Villa
+Fulham,Tottenham
+Ipswich,Coventry
+Leeds,Man City
+Man United,Newcastle
+Nott'm Forest,Hull
+Sunderland,Liverpool
+Bournemouth,Ipswich
+Aston Villa,Man United
+Brentford,Brighton
+Chelsea,Sunderland
+Coventry,Everton
+Hull,Arsenal
+Liverpool,Crystal Palace
+Man City,Nott'm Forest
+Newcastle,Fulham
+Tottenham,Leeds
+Arsenal,Newcastle
+Brighton,Man City
+Crystal Palace,Tottenham
+Everton,Brentford
+Fulham,Aston Villa
+Ipswich,Hull
+Leeds,Chelsea
+Man United,Liverpool
+Nott'm Forest,Bournemouth
+Sunderland,Coventry
+Bournemouth,Fulham
+Aston Villa,Ipswich
+Brentford,Man United
+Chelsea,Nott'm Forest
+Coventry,Leeds
+Hull,Crystal Palace
+Liverpool,Everton
+Man City,Arsenal
+Newcastle,Brighton
+Tottenham,Sunderland
+Arsenal,Liverpool
+Brighton,Hull
+Crystal Palace,Coventry
+Everton,Newcastle
+Fulham,Man City
+Ipswich,Tottenham
+Leeds,Bournemouth
+Man United,Chelsea
+Nott'm Forest,Brentford
+Sunderland,Aston Villa
+Aston Villa,Bournemouth
+Coventry,Liverpool
+Crystal Palace,Brentford
+Everton,Leeds
+Fulham,Nott'm Forest
+Hull,Sunderland
+Ipswich,Arsenal
+Man United,Brighton
+Newcastle,Chelsea
+Tottenham,Man City
+Bournemouth,Crystal Palace
+Arsenal,Fulham
+Brentford,Coventry
+Brighton,Tottenham
+Chelsea,Ipswich
+Leeds,Aston Villa
+Liverpool,Hull
+Man City,Newcastle
+Nott'm Forest,Man United
+Sunderland,Everton
+Aston Villa,Chelsea
+Coventry,Bournemouth
+Crystal Palace,Sunderland
+Everton,Nott'm Forest
+Fulham,Leeds
+Hull,Man City
+Ipswich,Brighton
+Man United,Arsenal
+Newcastle,Brentford
+Tottenham,Liverpool
+Bournemouth,Tottenham
+Arsenal,Crystal Palace
+Brentford,Ipswich
+Brighton,Fulham
+Chelsea,Coventry
+Leeds,Hull
+Liverpool,Aston Villa
+Man City,Everton
+Nott'm Forest,Newcastle
+Sunderland,Man United
+Bournemouth,Newcastle
+Aston Villa,Hull
+Chelsea,Arsenal
+Coventry,Man City
+Crystal Palace,Fulham
+Leeds,Brighton
+Liverpool,Ipswich
+Man United,Everton
+Sunderland,Brentford
+Tottenham,Nott'm Forest
+Arsenal,Sunderland
+Brentford,Bournemouth
+Brighton,Coventry
+Everton,Tottenham
+Fulham,Liverpool
+Hull,Chelsea
+Ipswich,Crystal Palace
+Man City,Man United
+Newcastle,Leeds
+Nott'm Forest,Aston Villa
+Bournemouth,Man City
+Aston Villa,Brighton
+Chelsea,Fulham
+Coventry,Arsenal
+Crystal Palace,Everton
+Leeds,Nott'm Forest
+Liverpool,Newcastle
+Man United,Hull
+Sunderland,Ipswich
+Tottenham,Brentford
+Arsenal,Aston Villa
+Brentford,Leeds
+Brighton,Chelsea
+Everton,Bournemouth
+Fulham,Sunderland
+Hull,Coventry
+Ipswich,Man United
+Man City,Crystal Palace
+Newcastle,Tottenham
+Nott'm Forest,Liverpool
+Bournemouth,Arsenal
+Aston Villa,Coventry
+Brentford,Fulham
+Chelsea,Man City
+Everton,Brighton
+Leeds,Liverpool
+Man United,Crystal Palace
+Newcastle,Ipswich
+Nott'm Forest,Sunderland
+Tottenham,Hull
+Arsenal,Tottenham
+Brighton,Nott'm Forest
+Coventry,Man United
+Crystal Palace,Aston Villa
+Fulham,Everton
+Hull,Bournemouth
+Ipswich,Leeds
+Liverpool,Chelsea
+Man City,Brentford
+Sunderland,Newcastle
+Bournemouth,Man United
+Brentford,Aston Villa
+Brighton,Sunderland
+Everton,Hull
+Fulham,Ipswich
+Leeds,Arsenal
+Man City,Liverpool
+Newcastle,Coventry
+Nott'm Forest,Crystal Palace
+Tottenham,Chelsea
+Arsenal,Nott'm Forest
+Aston Villa,Newcastle
+Chelsea,Everton
+Coventry,Tottenham
+Crystal Palace,Brighton
+Hull,Fulham
+Ipswich,Man City
+Liverpool,Brentford
+Man United,Leeds
+Sunderland,Bournemouth
+Bournemouth,Chelsea
+Brentford,Hull
+Brighton,Liverpool
+Everton,Arsenal
+Fulham,Coventry
+Leeds,Sunderland
+Man City,Aston Villa
+Newcastle,Crystal Palace
+Nott'm Forest,Ipswich
+Tottenham,Man United
+Arsenal,Brighton
+Aston Villa,Tottenham
+Chelsea,Brentford
+Coventry,Nott'm Forest
+Crystal Palace,Leeds
+Hull,Newcastle
+Ipswich,Everton
+Liverpool,Bournemouth
+Man United,Fulham
+Sunderland,Man City

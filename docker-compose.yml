@@ -1,0 +1,7 @@
+services:
+  api:
+    build: .
+    image: pl-predictor
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
