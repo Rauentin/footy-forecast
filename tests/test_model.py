@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from pl_model.model import ModelParams, fit, predict_match, scoreline_grid, tau_rho, tau_rho_vec
+from pl_model.model import ModelParams, fit, load_data, predict_match, scoreline_grid, tau_rho, tau_rho_vec
 
 
 def test_tau_rho_vec_matches_tau_rho():
@@ -55,3 +55,10 @@ def test_params_round_trip(params, tmp_path):
     path = tmp_path / "params.json"
     params.save(path)
     assert ModelParams.load(path) == params
+
+
+def test_load_data_keeps_file_order_within_a_day(tmp_path):
+    path = tmp_path / "matches.csv"
+    rows = [f"2026-11-01,Home{i},Away{i},1,0" for i in range(20)]
+    path.write_text("MatchDate,HomeTeam,AwayTeam,FullTimeHomeGoals,FullTimeAwayGoals\n" + "\n".join(rows))
+    assert list(load_data(path)["HomeTeam"]) == [f"Home{i}" for i in range(20)]

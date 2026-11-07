@@ -1,7 +1,8 @@
 import numpy as np
+import pandas as pd
 import pytest
 
-from pl_model.simulate import league_ranks, simulate_seasons
+from pl_model.simulate import league_ranks, remaining_fixtures, simulate_seasons
 
 
 def test_every_team_plays_every_match(params, fixtures):
@@ -45,3 +46,37 @@ def test_full_ties_are_not_broken_alphabetically():
     ranks = league_ranks(points, goals, goals, np.random.default_rng(0))
     champions = np.bincount(ranks.argmin(axis=1), minlength=3) / 1000
     np.testing.assert_allclose(champions, 1 / 3, atol=0.05)
+
+
+def played(*pairs):
+    return pd.DataFrame(pairs, columns=["HomeTeam", "AwayTeam"])
+
+
+def test_remaining_fixtures_removes_played_matches(fixtures):
+    remaining = remaining_fixtures(fixtures, played(("Alpha", "Bravo"), ("Delta", "Charlie")))
+    assert len(remaining) == len(fixtures) - 2
+    assert ("Alpha", "Bravo") not in remaining
+    assert ("Bravo", "Alpha") in remaining
+
+
+def test_remaining_fixtures_keeps_fixture_order(fixtures):
+    remaining = remaining_fixtures(fixtures, played(("Alpha", "Bravo")))
+    assert remaining == [f for f in fixtures if f != ("Alpha", "Bravo")]
+
+
+def test_remaining_fixtures_with_nothing_played(fixtures):
+    assert remaining_fixtures(fixtures, played()) == fixtures
+
+
+def test_remaining_fixtures_with_everything_played(fixtures):
+    assert remaining_fixtures(fixtures, played(*fixtures)) == []
+
+
+def test_remaining_fixtures_rejects_unknown_match(fixtures):
+    with pytest.raises(ValueError, match="not in the fixture list"):
+        remaining_fixtures(fixtures, played(("Alpha", "Wrexham")))
+
+
+def test_remaining_fixtures_rejects_match_played_twice(fixtures):
+    with pytest.raises(ValueError, match="more than once"):
+        remaining_fixtures(fixtures, played(("Alpha", "Bravo"), ("Alpha", "Bravo")))

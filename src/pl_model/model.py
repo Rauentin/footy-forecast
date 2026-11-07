@@ -10,7 +10,7 @@ from scipy.stats import poisson
 def load_data(csv_path):
     df = pd.read_csv(csv_path)
     df["MatchDate"] = pd.to_datetime(df["MatchDate"])
-    df = df.sort_values("MatchDate").reset_index(drop=True)
+    df = df.sort_values("MatchDate", kind="stable").reset_index(drop=True)
     return df
 
 def time_decay(MatchDates, xi):

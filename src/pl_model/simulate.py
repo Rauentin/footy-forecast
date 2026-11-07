@@ -1,3 +1,5 @@
+from collections import Counter
+
 import numpy as np
 import pandas as pd
 
@@ -7,6 +9,25 @@ from pl_model.model import scoreline_grid
 def load_fixtures(fixtures_path):
     fixtures = pd.read_csv(fixtures_path)
     return list(zip(fixtures["HomeTeam"], fixtures["AwayTeam"]))
+
+def remaining_fixtures(fixtures, played):
+    """Return the fixtures that have not been played yet, in fixture-list order.
+
+    `played` must hold this season's matches only: in a season every home/away pairing
+    happens exactly once, so a pairing played twice or not in the fixture list means
+    the input mixes seasons or has misspelt team names.
+    """
+    played_pairs = Counter(zip(played["HomeTeam"], played["AwayTeam"]))
+
+    duplicates = sorted(pair for pair, count in played_pairs.items() if count > 1)
+    if duplicates:
+        raise ValueError(f"Matches played more than once (more than one season?): {duplicates}")
+
+    unknown = sorted(set(played_pairs) - set(fixtures))
+    if unknown:
+        raise ValueError(f"Played matches not in the fixture list: {unknown}")
+
+    return [fixture for fixture in fixtures if fixture not in played_pairs]
 
 def league_ranks(points, goals_for, goals_against, rng):
     goal_difference = goals_for - goals_against

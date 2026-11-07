@@ -11,6 +11,8 @@ E0_COLUMNS = {
     "FTAG": "FullTimeAwayGoals",
 }
 
+MATCH_KEY = ["MatchDate", "HomeTeam", "AwayTeam"]
+
 
 def read_e0(source):
     """Read an E0.csv from a path or URL. utf-8-sig strips the byte-order mark."""
@@ -31,3 +33,28 @@ def convert_e0(raw):
     df["FullTimeAwayGoals"] = df["FullTimeAwayGoals"].astype(int)
 
     return df.sort_values("MatchDate", kind="stable").reset_index(drop=True)
+
+
+def add_new_matches(existing, new):
+    """Append the matches in `new` that are not in `existing` yet.
+
+    A match is identified by date, home team and away team. Running this twice with the
+    same data changes nothing. If a match is in both but the scores differ, a ValueError
+    is raised instead of silently keeping either version.
+    """
+    new = new[list(existing.columns)]
+
+    overlap = existing.merge(new, on=MATCH_KEY, suffixes=("_existing", "_new"))
+    changed = overlap[
+        (overlap["FullTimeHomeGoals_existing"] != overlap["FullTimeHomeGoals_new"])
+        | (overlap["FullTimeAwayGoals_existing"] != overlap["FullTimeAwayGoals_new"])
+    ]
+    if not changed.empty:
+        matches = ", ".join(
+            f"{m.HomeTeam} v {m.AwayTeam} on {m.MatchDate.date()}" for m in changed.itertuples()
+        )
+        raise ValueError(f"Scores differ from the existing data: {matches}")
+
+    combined = pd.concat([existing, new], ignore_index=True)
+    combined = combined.drop_duplicates(subset=MATCH_KEY, keep="first")
+    return combined.sort_values("MatchDate", kind="stable").reset_index(drop=True)
