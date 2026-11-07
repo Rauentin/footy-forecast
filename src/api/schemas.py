@@ -1,4 +1,6 @@
-from pydantic import BaseModel, Field
+from typing import Literal
+
+from pydantic import BaseModel, Field, model_validator
 
 from pl_model.config import Settings
 
@@ -12,8 +14,16 @@ class Fixture(BaseModel):
 
 class SimulationRequest(BaseModel):
     fixtures: list[Fixture] | None = Field(default=None, min_length=1)
+    mode: Literal["remaining", "full"] = "remaining"
     n_simulations: int = Field(default=settings.default_n_simulations, ge=1, le=settings.max_n_simulations)
     seed: int = 42
+
+    @model_validator(mode="after")
+    def mode_needs_default_fixtures(self):
+        # own fixtures are always simulated from scratch, so a mode would be ignored
+        if self.fixtures is not None and "mode" in self.model_fields_set:
+            raise ValueError("mode only applies to the default fixture list, not to your own fixtures")
+        return self
 
 
 class TeamProjection(BaseModel):
@@ -31,6 +41,9 @@ class TeamProjection(BaseModel):
 
 
 class SimulationResponse(BaseModel):
+    mode: Literal["remaining", "full", "custom"]
+    matches_played: int
+    matches_simulated: int
     n_simulations: int
     seed: int
     table: list[TeamProjection]

@@ -1,6 +1,6 @@
 # Premier League Predictor
 
-A Dixon-Coles goal model fitted on Premier League results since 2000/01 (up to 19 Oct 2026),
+A Dixon-Coles goal model fitted on Premier League results since 2000/01 (up to 2 Nov 2026),
 served as a FastAPI app with a Gradio UI. Predicts single matches and simulates seasons with Monte Carlo.
 
 ## Run
@@ -15,7 +15,7 @@ docker compose down
 | `GET /health` | status and number of teams |
 | `GET /teams` | valid team names |
 | `GET /predict?home_team=Arsenal&away_team=Chelsea` | win/draw/loss probabilities, expected goals, likeliest score |
-| `POST /simulate` | projected table; body `{"n_simulations": 1000, "seed": 42}`, optional `fixtures` |
+| `POST /simulate` | projected table; body `{"mode": "remaining", "n_simulations": 1000, "seed": 42}`. `mode` is `remaining` (default: played matches count with their real results) or `full` (whole season from scratch); or pass your own `fixtures` instead |
 | `/ui` | Gradio page |
 | `/docs` | interactive API docs |
 
@@ -57,7 +57,8 @@ data/, models/  match history, fixtures, fitted parameters
 
 The code is MIT licensed (see `LICENSE`). The match data is not covered by that license:
 the results the model was fitted on come from [football-data.co.uk](https://www.football-data.co.uk) and remain subject to their terms.
-Predictions are for educational purposes only and are not betting advice.
+Predictions are for educational purposes only and are NOT betting advice.
+
 
 ## Roadmap (v2)
 
@@ -65,7 +66,7 @@ Predictions are for educational purposes only and are not betting advice.
   `E0.csv` format and appends new matches to `data/epl_final.csv`, then refits.
 - data analysis for finding a xi that is found in updated data
 - **In-season simulation:** start `/simulate` from the current standings and only simulate the
-  remaining fixtures.
+  remaining fixtures. (done)
 - **Promoted teams:** rated only on this season's few matches; give them a prior instead.
 - european top leagues support
 - hardest challenge, predict UCL Games with data from top leagues

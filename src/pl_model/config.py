@@ -8,6 +8,7 @@ class Settings(BaseSettings):
 
     data_path: Path = Path("data/epl_final.csv")
     fixtures_path: Path = Path("data/epl_2026_27_fixtures.csv")
+    results_path: Path = Path("data/epl_2026_27_results.csv")
     params_path: Path = Path("models/params.json")
 
     xi: float = 0.0018

@@ -105,3 +105,39 @@ def test_simulate_same_seed_same_result():
     first = simulate({"n_simulations": 50, "seed": 7}).json()
     second = simulate({"n_simulations": 50, "seed": 7}).json()
     assert first == second
+
+
+def test_simulate_defaults_to_remaining_season():
+    body = simulate({"n_simulations": 50}).json()
+    assert body["mode"] == "remaining"
+    assert body["matches_played"] + body["matches_simulated"] == 380
+    assert body["matches_played"] > 0
+    for row in body["table"]:
+        assert row["avg_won"] + row["avg_drawn"] + row["avg_lost"] == pytest.approx(38)
+
+
+def test_simulate_full_season():
+    body = simulate({"mode": "full", "n_simulations": 50}).json()
+    assert body["mode"] == "full"
+    assert (body["matches_played"], body["matches_simulated"]) == (0, 380)
+
+
+def test_remaining_and_full_season_differ():
+    remaining = simulate({"mode": "remaining", "n_simulations": 50}).json()["table"]
+    full = simulate({"mode": "full", "n_simulations": 50}).json()["table"]
+    assert remaining != full
+
+
+def test_simulate_unknown_mode():
+    assert simulate({"mode": "half"}).status_code == 422
+
+
+def test_simulate_own_fixtures_reports_custom_mode():
+    body = simulate({"fixtures": [{"home_team": "Arsenal", "away_team": "Chelsea"}], "n_simulations": 10}).json()
+    assert (body["mode"], body["matches_played"], body["matches_simulated"]) == ("custom", 0, 1)
+
+
+def test_simulate_own_fixtures_with_mode_is_rejected():
+    response = simulate({"fixtures": [{"home_team": "Arsenal", "away_team": "Chelsea"}], "mode": "full"})
+    assert response.status_code == 422
+    assert "mode only applies" in response.text

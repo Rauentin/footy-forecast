@@ -8,6 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ src/
 COPY models/params.json models/params.json
 COPY data/epl_2026_27_fixtures.csv data/epl_2026_27_fixtures.csv
+COPY data/epl_2026_27_results.csv data/epl_2026_27_results.csv
 
 EXPOSE 8000
 

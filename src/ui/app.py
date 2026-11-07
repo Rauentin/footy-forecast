@@ -16,7 +16,10 @@ TABLE_COLUMNS = {
 }
 
 
-def build_ui(params, fixtures, max_n_simulations):
+SEASON_MODES = ["Remaining season", "Full season"]
+
+
+def build_ui(params, fixtures, played, max_n_simulations):
     def predict(home_team, away_team):
         if home_team == away_team:
             raise gr.Error("Home and away teams must be different.")
@@ -38,13 +41,20 @@ def build_ui(params, fixtures, max_n_simulations):
         }
         return outcomes, expected_goals, scorelines
 
-    def simulate(n_simulations, seed):
-        table = simulate_seasons(params, fixtures, n_simulations=int(n_simulations), seed=int(seed))
+    def simulate(mode, n_simulations, seed):
+        table = simulate_seasons(
+            params,
+            fixtures,
+            n_simulations=int(n_simulations),
+            seed=int(seed),
+            played=played if mode == "Remaining season" else None,
+        )
         table = table.rename(columns=TABLE_COLUMNS).round(1).reset_index()
         table.insert(0, "Pos", range(1, len(table) + 1))
         return table[["Pos", "Team", *TABLE_COLUMNS.values()]]
 
     current_teams = sorted({team for fixture in fixtures for team in fixture})
+    last_played = played["MatchDate"].max()
 
     with gr.Blocks(title="Footy Forecast") as demo:
         gr.Markdown("# Footy Forecast\nDixon-Coles model fitted on past Premier League results.")
@@ -67,7 +77,14 @@ def build_ui(params, fixtures, max_n_simulations):
             )
 
         with gr.Tab("Season"):
-            gr.Markdown("Simulates the full 2026/27 fixture list many times and averages the final tables.")
+            gr.Markdown(
+                "Simulates the 2026/27 season many times and averages the final tables.\n\n"
+                f"- **Remaining season:** the {len(played)} matches played up to "
+                f"{last_played.day} {last_played:%b %Y} count with their real results; "
+                f"only the other {len(fixtures) - len(played)} are simulated.\n"
+                f"- **Full season:** all {len(fixtures)} fixtures are simulated from scratch."
+            )
+            mode = gr.Radio(choices=SEASON_MODES, value=SEASON_MODES[0], label="Simulate")
             with gr.Row():
                 n_simulations = gr.Slider(
                     minimum=100, maximum=max_n_simulations, step=100, value=1000, label="Simulations"
@@ -76,6 +93,6 @@ def build_ui(params, fixtures, max_n_simulations):
             simulate_button = gr.Button("Simulate season", variant="primary")
             table = gr.Dataframe(label="Projected table", interactive=False)
 
-            simulate_button.click(simulate, inputs=[n_simulations, seed], outputs=table)
+            simulate_button.click(simulate, inputs=[mode, n_simulations, seed], outputs=table)
 
     return demo
